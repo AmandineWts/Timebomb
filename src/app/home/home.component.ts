@@ -24,8 +24,9 @@ export class HomeComponent implements OnInit {
   }
 
   createPrivateRoom() {
-    this.af.database.app.firestore().collection('lobby').add({'name':this.player.name});
-    this.router.navigate(['lobby']);
+    this.af.list<any>('lobby/1/player').push({'name':this.player.name}).then(() => {
+      this.router.navigate(['lobby']);
+    });
   }
 
 }

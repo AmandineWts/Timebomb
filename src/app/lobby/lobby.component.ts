@@ -17,8 +17,8 @@ export class LobbyComponent implements OnInit {
 
 
   ngOnInit() {
-    this.af.list<any>('lobby').valueChanges().subscribe((dbLobbies) => {
-      this.players = dbLobbies[0].player;
+    this.af.list<any>('lobby/1/player').valueChanges().subscribe((dbLobbies) => {
+      this.players = dbLobbies;
       console.log("values changed!");
     });
   }
