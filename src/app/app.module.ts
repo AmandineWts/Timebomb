@@ -16,7 +16,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'lobby',
+    path: 'lobby/:lobbyId',
     component: LobbyComponent
   }
 ];

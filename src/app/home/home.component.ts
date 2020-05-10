@@ -24,9 +24,9 @@ export class HomeComponent implements OnInit {
   }
 
   createPrivateRoom() {
-    this.af.list<any>('lobby/1/player').push({'name':this.player.name}).then(() => {
-      this.router.navigate(['lobby']);
-    });
+    let newRef = this.af.list<any>('lobby').push({'player':'tmp'}).key;
+    this.af.list<any>(`lobby/${newRef}/player`).push({'name':this.player.name});
+    this.router.navigate([`lobby/${newRef}`]);
   }
 
 }

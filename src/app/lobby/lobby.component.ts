@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AngularFireDatabase} from "angularfire2/database";
 import {Player} from "./player";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-lobby',
@@ -12,14 +13,15 @@ export class LobbyComponent implements OnInit {
   public players: Player[];
 
   constructor(
-    private af: AngularFireDatabase
+    private af: AngularFireDatabase,
+    private route: ActivatedRoute
   ) {  }
 
 
   ngOnInit() {
-    this.af.list<any>('lobby/1/player').valueChanges().subscribe((dbLobbies) => {
+    let lobbyId = this.route.snapshot.paramMap.get('lobbyId');
+    this.af.list<any>(`lobby/${lobbyId}/player`).valueChanges().subscribe((dbLobbies) => {
       this.players = dbLobbies;
-      console.log("values changed!");
     });
   }
 
