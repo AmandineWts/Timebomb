@@ -16,6 +16,10 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'join/:lobbyId',
+    component: HomeComponent
+  },
+  {
     path: 'lobby/:lobbyId',
     component: LobbyComponent
   }

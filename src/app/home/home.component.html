@@ -1,3 +1,4 @@
 <label for="name">Name :</label>
 <input type="text" id="name" [(ngModel)]="player.name">
-<button type="submit" [disabled]="player.name.length == 0" (click)="createPrivateRoom()">Créer un salon privé</button>
+<button type="submit" *ngIf="!joinFromLink" [disabled]="player.name.length == 0" (click)="createPrivateRoom()">Créer un salon privé</button>
+<button type="submit" *ngIf="joinFromLink" [disabled]="player.name.length == 0" (click)="joinPrivateRoom()">Rejoindre le salon privé</button>

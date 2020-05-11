@@ -2,3 +2,6 @@
 <div *ngFor="let player of players">
   {{player?.name}}
 </div>
+
+<button ngxClipboard (click)="copyMessage(linkToPaste)">Copier le lien de partage</button>
+
