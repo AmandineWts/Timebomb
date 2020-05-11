@@ -2,6 +2,7 @@ import {Component, isDevMode, OnInit} from '@angular/core';
 import {AngularFireDatabase} from "angularfire2/database";
 import {Player} from "./player";
 import {ActivatedRoute} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-lobby',
@@ -25,15 +26,7 @@ export class LobbyComponent implements OnInit {
     this.af.list<any>(`lobby/${this.lobbyId}/player`).valueChanges().subscribe((dbLobbies) => {
       this.players = dbLobbies;
     });
-    this.initLinkToPaste();
-  }
-
-  initLinkToPaste() {
-    if (isDevMode()) {
-      this.linkToPaste = `https://timebomb-dfc7e.web.app/join/${this.lobbyId}`;
-    } else {
-      this.linkToPaste = `http://localhost:4200/join/${this.lobbyId}`;
-    }
+    this.linkToPaste = `${environment.API_URL}/join/${this.lobbyId}`;
   }
 
   copyMessage(val: string){
